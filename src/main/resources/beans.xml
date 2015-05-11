@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Scan the classes automaticlly -->
+	<context:annotation-config />  
+    <context:component-scan base-package="com.banshou.app.actions"/> 
+	<context:component-scan base-package="com.banshou.app.dao.impl" />
+	<context:component-scan base-package="com.banshou.app.service.impl" />
+	
+	<beans:bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></beans:bean> 
+	<beans:bean id="loadinfo"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath:info.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<!-- Add JPA -->
+	<tx:annotation-driven />
+
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="${CLASS_NAME}" />
+		<beans:property name="url" value="${URL}" />
+		<beans:property name="username" value="${USERNAME}" />
+		<beans:property name="password" value="${PASSWORD}" />
+	</beans:bean>
+	
+	<!-- <resources mapping="/css/**" location="/css/" />
+	<resources mapping="/images/**" location="/images/" />
+	<resources mapping="/lib/**" location="/lib/" /> -->
+	
+	<beans:bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<beans:property name="persistenceUnitName" value="shopadmin" />
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+	</beans:bean>
+</beans:beans>

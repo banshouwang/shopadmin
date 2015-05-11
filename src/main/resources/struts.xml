@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="package" />
+	
+    <!-- <include file="struts-wx.xml" />   -->                                                            
+	
+	<package name="mobile" namespace="/mobile" extends="struts-default">
+		<action name="registry" class="com.banshou.app.actions.UserAction" method="reg">
+			<result name="success">index.jsp</result>
+			<result name="REGFAIL">reg_fail.jsp</result>
+		</action>
+		<action name="logout" class="com.banshou.app.actions.UserAction" method="logout">
+			<result name="success" type="redirect">../index.jsp</result>
+		</action>
+		<action name="mobileValid" class="com.banshou.app.actions.UserAction" method="mobileValid">
+			<result name="success">registrysec.jsp</result>
+		</action>	
+		<action name="services" class="com.banshou.app.actions.UserAction" method="login">
+			<result name="success">index.jsp</result>
+			<result name="REGISTRY">registry.jsp</result>
+		</action>
+		<action name="addPoint" class="com.banshou.app.actions.UserAction" method="addPoint">
+			<result name="success">index.jsp</result>
+		</action>
+		<action name="addGoods" class="com.banshou.app.actions.GoodsAction" method="add">
+			<result name="success">index.jsp</result>
+			<result name="ADDFAIL">registry.jsp</result>
+		</action>
+		<action name="login" class="com.banshou.app.actions.AuthAction" method="login">
+			<result name="success" type="redirect">../jsp/index.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="data" extends="json-default" namespace="/d">
+        <action name="checkMobile" class="com.banshou.app.actions.UserAction" method="checkMobile">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- Actions for admin -->
+		<action name="addCate" class="com.banshou.app.actions.CateAction" method="add">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getAllCates" class="com.banshou.app.actions.CateAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="addGoods" class="com.banshou.app.actions.GoodsAction" method="add">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getAllGoods" class="com.banshou.app.actions.GoodsAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteGoods" class="com.banshou.app.actions.GoodsAction" method="delete">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="uploadImage" class="com.banshou.app.actions.ImageUploadAction" method="upload">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="uploadBatch" class="com.banshou.app.actions.ImageUploadAction" method="uploadBatch">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="authQr" class="com.banshou.app.actions.AuthAction" method="generator">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="authQrReload" class="com.banshou.app.actions.AuthAction" method="reload">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="upload" class="com.banshou.app.actions.StoreAction" method="upload">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="storeUpdate" class="com.banshou.app.actions.StoreAction" method="update">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="authExpired" class="com.banshou.app.actions.AuthAction" method="expired">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getAllOrder" class="com.banshou.app.actions.OrderAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getTodayOrder" class="com.banshou.app.actions.OrderAction" method="getToday">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteOrder" class="com.banshou.app.actions.OrderAction" method="delete">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="login" class="com.banshou.app.actions.UserAction" method="login">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getCategory" class="com.banshou.app.actions.CateAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+    </package>
+	
+</struts>

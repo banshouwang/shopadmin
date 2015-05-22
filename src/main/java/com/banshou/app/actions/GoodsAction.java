@@ -38,6 +38,8 @@ public class GoodsAction extends ActionSupport {
 	private String latitude;
 	private String longitude;
 	
+	private String password;
+	
 	@Autowired
 	GoodsService goodsService;
 	
@@ -103,6 +105,23 @@ public class GoodsAction extends ActionSupport {
 		goodsService.deleteById(number);
 		LOGGER.info("[GoodAction] {delete method} delete item: " + number + " successfully");
 		dataMap.put("data", "success");
+		return SUCCESS;
+	}
+	
+	public String consume(){
+		LOGGER.info("[GoodAction] {consume method} begin to exchange the password: " + password);
+		dataMap = new HashMap<String, Object>();
+		try{
+			String result = goodsService.consume(password);
+			if("success".equals(result)){
+				dataMap.put("data", "success");
+			} else {
+				dataMap.put("data", "already");
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
 		return SUCCESS;
 	}
 
@@ -233,4 +252,13 @@ public class GoodsAction extends ActionSupport {
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }

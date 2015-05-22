@@ -9,4 +9,5 @@ public interface GoodsDao {
 	public List<Goods> getAll();
 	public List<Goods> getGoodsByAddress(String addr);
 	public void deleteById(String id);
+	public String consume(String password);
 }

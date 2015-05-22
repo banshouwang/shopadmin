@@ -18,12 +18,12 @@
 	$(document).ready(function() {
 		setOption();
 		
-		$.uploadPreview({
+		/*$.uploadPreview({
 			input_field : "#imageUpload",
 			preview_box : "#image-preview",
 			label_field : "#image-label",
 			no_label : true
-		});
+		});*/
 
 		$("#addGoods").validate({
 			rules : {
@@ -81,12 +81,13 @@
 			submitHandler : function(form) {
 				var category = $("#category").val();
 				if(category != "选择类别"){
-					var image = document.getElementById("imageName").value;
+					addGoods();
+					/*var image = document.getElementById("imageName").value;
 					if (image == "" || image == null) {
 						alert("请上传图片");
 					} else {
 						addGoods();
-					}
+					}*/
 				} else {
 					alert("请选择分类");
 				}
@@ -100,6 +101,7 @@
 		var storeNum = "${sessionScope.store.number}";
 		var latitude = "${sessionScope.store.latitude}";
 		var longitude = "${sessionScope.store.longitude}";
+		var imageName = "${sessionScope.store.image}";
 		console.log("address: ", address);
 		console.log("storeNum: ", storeNum);
 		$.ajax({
@@ -128,9 +130,7 @@
 				ticket : function() {
 					return $("#select-choice-a").val();
 				},
-				imageName : function() {
-					return $("#imageName").val();
-				},
+				imageName : imageName,
 				address : address,
 				storeNum : storeNum,
 				latitude : latitude,
@@ -149,7 +149,7 @@
 			}
 		});
 	}
-	function upload() {
+	/*function upload() {
 		Date.prototype.Format = function(fmt) { 
 			var o = {
 				"M+" : this.getMonth() + 1, 
@@ -196,7 +196,7 @@
 		});
 
 		alert("上传成功");
-	}
+	}*/
 
 	function setOption(){
 		$.ajax({
@@ -279,13 +279,13 @@
 									<textarea rows="3" class="form-control" name="brief" id="brief"></textarea>
 								</div>
 
-								<div id="image-preview" style="width: 48px; height: 48px;">
+								<!-- <div id="image-preview" style="width: 48px; height: 48px;">
 									<label id="image-label"></label><br>
 								</div>
 								<br>
 								<div class="form-group">
 									<input type="file" id="imageUpload" name="upload" value="选择图片" /><br> <a href="javascript:void(0);" class="btn btn-success" onclick="upload()">上传图片</a>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<label>是否支持抵用券?</label> <input name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked" type="radio" onclick="showTicket()"> <label for="radio-choice-h-2a">是</label> <input name="radio-choice-h-2" id="radio-choice-h-2b" value="off" type="radio" onclick="hideTicket()"> <label for="radio-choice-h-2b">否</label>
 								</div>

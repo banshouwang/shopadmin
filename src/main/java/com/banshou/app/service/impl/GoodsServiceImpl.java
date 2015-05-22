@@ -36,7 +36,14 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
+	@Transactional
 	public List<Goods> getGoodsByAddress(String addr) {
 		return goodsDao.getGoodsByAddress(addr);
+	}
+
+	@Override
+	@Transactional
+	public String consume(String password) {
+		return goodsDao.consume(password);
 	}
 }

@@ -58,6 +58,9 @@
 		if (command == "goods") {
 			$("#maincontent").load("report.htm");
 		}
+		if (command == "use") {
+			$("#maincontent").load("consume.jsp");
+		}
 		/*if (command == "order") {
 			$("#maincontent").load("report.htm");
 		}*/
@@ -100,6 +103,7 @@
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> 控制面版<i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="dashboard-menu nav nav-list collapse in">
+					<li><a href="javascript:void(0);" onclick="openpage('use')"><span class="fa fa-caret-right"></span> 快速消费</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('store')"><span class="fa fa-caret-right"></span> 店铺设置</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('todayOrder')"><span class="fa fa-caret-right"></span> 今日订单</a></li>
 				</ul>

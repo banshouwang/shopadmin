@@ -23,4 +23,8 @@ public class CodeGenerator {
 		UUID uuid = UUID.randomUUID();
 		return uuid.toString();
 	}
+	
+	public static synchronized String generateTimeStampString(){
+		return Long.toString(System.currentTimeMillis());
+	}
 }

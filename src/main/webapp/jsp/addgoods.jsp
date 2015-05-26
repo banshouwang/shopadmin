@@ -101,7 +101,7 @@
 		var storeNum = "${sessionScope.store.number}";
 		var latitude = "${sessionScope.store.latitude}";
 		var longitude = "${sessionScope.store.longitude}";
-		var imageName = "${sessionScope.store.image}";
+		var imageName = "${sessionScope.store.icon}";
 		console.log("address: ", address);
 		console.log("storeNum: ", storeNum);
 		$.ajax({

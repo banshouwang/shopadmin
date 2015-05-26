@@ -20,10 +20,10 @@ public class Store {
 	private String tel;
 
 	@Column(name = "st_is_valid", nullable = true)
-	private String isvalid;
+	private Boolean isvalid;
 
 	@Column(name = "st_is_vip", nullable = true)
-	private String isvip;
+	private Boolean isvip;
 
 	@Column(name = "st_point", nullable = true)
 	private int point;
@@ -33,6 +33,9 @@ public class Store {
 
 	@Column(name = "st_image", nullable = true)
 	private String image;
+	
+	@Column(name = "st_icon", nullable = true)
+	private String icon;
 
 	@Column(name = "st_address", nullable = true)
 	private String address;
@@ -72,19 +75,19 @@ public class Store {
 		this.tel = tel;
 	}
 
-	public String getIsvalid() {
+	public Boolean getIsvalid() {
 		return isvalid;
 	}
 
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(Boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 
-	public String getIsvip() {
+	public Boolean getIsvip() {
 		return isvip;
 	}
 
-	public void setIsvip(String isvip) {
+	public void setIsvip(Boolean isvip) {
 		this.isvip = isvip;
 	}
 
@@ -143,4 +146,13 @@ public class Store {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 }

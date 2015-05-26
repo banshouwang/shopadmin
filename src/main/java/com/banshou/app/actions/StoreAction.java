@@ -24,6 +24,8 @@ public class StoreAction extends ActionSupport {
 	private String tel;
 	private String names;
 	private String storeNum;
+	private String longitude;
+	private String latitude;
 
 	@Autowired
 	StoreService storeService;
@@ -31,7 +33,14 @@ public class StoreAction extends ActionSupport {
 	public String update() {
 		LOGGER.info("[StoreAction] {update method} begin to update the store details ...");
 		dataMap = new HashMap<String, Object>();
-		String images = names.substring(0, names.length() - 1);
+		String[] images = names.split(",");
+		String icon = images[0];
+		StringBuffer sb = new StringBuffer();
+		for(int i = 1; i < images.length; i ++){
+			sb.append(images[i]).append(",");
+		}
+		String image = sb.toString();
+		
 		
 		Store store = new Store();
 		store.setNumber(storeNum);
@@ -39,9 +48,12 @@ public class StoreAction extends ActionSupport {
 		store.setBrief(brief);
 		store.setAddress(address);
 		store.setTel(tel);
-		store.setImage(images);
-		store.setIsvalid("yes");
-		store.setIsvip("no");
+		store.setIcon(icon);
+		store.setImage(image.substring(0, image.length() - 1));
+		store.setIsvalid(true);
+		store.setIsvip(false);
+		store.setLongitude(longitude);
+		store.setLatitude(latitude);
 		store.setPoint(0);
 
 		int result = storeService.updateStoreByNum(store);
@@ -110,4 +122,19 @@ public class StoreAction extends ActionSupport {
 		this.storeNum = storeNum;
 	}
 
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
 }

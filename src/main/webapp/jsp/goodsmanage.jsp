@@ -3,64 +3,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<script type="text/javascript">
-	$(document).ready(function() {
-		tableRender();
-	});
-
-	function deleteRow(number) {
-		console.log("row number: ", number);
-		$.ajax({
-			type : "post",
-			url : "../d/deleteGoods.action",
-			dataType : "json",
-			data : {
-				number : number
-			},
-			success : function() {
-				console.log("delete success");
-				$("#delete_alert").show();
-				tableRender();
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert(errorThrown);
-			}
-		});
-	}
-
-	function tableRender() {
-		$('#goods').dataTable({
-			destroy: true,
-			"ajax" : "../d/getAllGoods.action",
-			"columns" : [ {
-				"data" : "number"
-			}, {
-				"data" : "category"
-			}, {
-				"data" : "name"
-			}, {
-				"data" : "brief"
-			}, {
-				"data" : "priceori"
-			}, {
-				"data" : "pricehere"
-			}, {
-				"data" : "isticket"
-			}, {
-				"data" : "ticket"
-			}, {
-				"data" : "isvalid"
-			}, {
-				"data" : "imageName"
-			}, {
-				"data" : null,
-				render : function(data, type, row) {
-					return "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-pencil'></i></a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-trash-o'></i></a>";
-				}
-			} ]
-		});
-	}
-</script>
 </head>
 <body class=" theme-blue">
 	<div class="content_other">
@@ -101,5 +43,63 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			tableRender();
+		});
+
+		function deleteRow(number) {
+			console.log("row number: ", number);
+			$.ajax({
+				type : "post",
+				url : "../d/deleteGoods.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function() {
+					console.log("delete success");
+					$("#delete_alert").show();
+					tableRender();
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+
+		function tableRender() {
+			$('#goods').dataTable({
+				destroy : true,
+				"ajax" : "../d/getAllGoods.action",
+				"columns" : [ {
+					"data" : "number"
+				}, {
+					"data" : "category"
+				}, {
+					"data" : "name"
+				}, {
+					"data" : "brief"
+				}, {
+					"data" : "priceori"
+				}, {
+					"data" : "pricehere"
+				}, {
+					"data" : "isticket"
+				}, {
+					"data" : "ticket"
+				}, {
+					"data" : "isvalid"
+				}, {
+					"data" : "imageName"
+				}, {
+					"data" : null,
+					render : function(data, type, row) {
+						return "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-pencil'></i></a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-trash-o'></i></a>";
+					}
+				} ]
+			});
+		}
+	</script>
 </body>
 </html>

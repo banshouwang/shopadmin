@@ -53,7 +53,7 @@
 				}
 			},
 			submitHandler : function(form) {
-				console.log("111111");
+				/*console.log("111111");
 				if (checkImages) {
 					console.log("22222");
 					var names = getImages();
@@ -63,7 +63,7 @@
 					form.submit();
 				} else {
 					alert("请上传店铺图片");
-				}
+				}*/
 			}
 		});
 	});
@@ -129,10 +129,13 @@
 	function update() {
 		var storeName = $("#storeName").val();
 		var brief = $("#brief").val();
-		var address = $("#address").val();
+		var address = $("#select-choice-a").val() + $("#select-choice-b").val() + $("#address").val();
 		var tel = $("#tel").val();
+		var longitude = $("#longitude").val();
+		var latitude = $("#latitude").val();
+		
 		var names = getImages();
-		if (storeName == "" || brief == "" || address == "" || tel == "") {
+		if (storeName == "" || brief == "" || address == "" || tel == "" || longitude == "" || latitude == "") {
 			alert("请填写完整信息");
 		} else if (names == "") {
 			alert("请上传图片");
@@ -147,6 +150,8 @@
 					address : address,
 					tel : tel,
 					names : names,
+					longitude : longitude,
+					latitude : latitude
 				},
 				success : function(data) {
 					var result = data.data;
@@ -160,6 +165,8 @@
 					$("#brief").val('');
 					$("#address").val('');
 					$("#tel").val('');
+					$("#longitude").val('');
+					$("#latitude").val('');
 					names = "";
 
 				},
@@ -183,14 +190,37 @@
 					<label>简介</label>
 					<textarea id="brief" name="brief" class="form-control span12 form-control" rows="" cols="">${sessionScope.store.brief}</textarea>
 				</div>
+				
 				<div class="form-group">
-					<label>地址</label> <input id="address" name="address" type="text" class="form-control span12" value="${sessionScope.store.address}">
+					<label>地址</label><br>
+					<label for="select-choice-a" class="select">选择市区:</label>
+					<select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+						<option value="宁波市">宁波市</option>
+						<!-- <option value="杭州市">杭州市</option>
+						<option value="上海市">上海市</option>
+						<option value="南京市">南京市</option> -->
+					</select> 
+					<select name="select-choice-b" id="select-choice-b" data-native-menu="false">
+						<option value="江东区">江东区</option>
+						<option value="江北区">江北区</option>
+						<option value="海曙区">海曙区</option>
+						<option value="高新区">高新区</option>
+						<option value="鄞州区">鄞州区</option>
+					</select>
+					<small>（下面请填写详细地址）</small>
+					<input id="address" name="address" type="text" class="form-control span12" value="${sessionScope.store.address}">
+				</div>
+				<div class="form-group">
+					<label>经度</label> <input id="longitude" name="longitude" type="text" class="form-control span12" value="${sessionScope.store.longitude}">
+				</div>
+				<div class="form-group">
+					<label>纬度</label> <input id="latitude" name="latitude" type="text" class="form-control span12" value="${sessionScope.store.latitude}">
 				</div>
 				<div class="form-group">
 					<label>电话</label> <input id="tel" name="tel" type="text" class="form-control span12" value="${sessionScope.store.tel}">
 				</div>
 				<div class="form-group">
-					<a href="javascript:void(0);" class="btn btn-default" onclick="load('open')">上传图片</a> <a href="javascript:void(0);" class="btn btn-default" onclick="load('close')">关闭图片</a>
+					<a href="javascript:void(0);" class="btn btn-default" onclick="load('open')">上传图片</a> <a href="javascript:void(0);" class="btn btn-default" onclick="load('close')">关闭图片</a> &nbsp;&nbsp;<span><small>注意: 上传的第一张图片将作为店标使用</small></span><font color='red'>*</font>
 					<div id="imagesUpload"></div>
 				</div>
 				<div id="alert" class="alert alert-success" style="display: none;">

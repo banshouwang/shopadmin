@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Component;
 
 import com.banshou.app.utils.aliyun.BucketHandler;
+import com.banshou.app.utils.common.CodeGenerator;
 import com.banshou.app.utils.common.Constants;
 import com.banshou.app.utils.common.RandomStrUtil;
 import com.opensymphony.xwork2.ActionSupport;
@@ -52,8 +53,7 @@ public class ImageUploadAction extends ActionSupport {
 		LOGGER.info("[ImageUploadAction] {batch upload method} begin to upload the images");
 		dataMap = new HashMap<String, Object>();
 		BucketHandler bh = new BucketHandler();
-		String time = RandomStrUtil.getTimeString("yyyyMMddHHmmssSSS");
-		String name = "ST" + time + RandomStrUtil.getNumStr(6);
+		String name = "ST" + CodeGenerator.generateTimeStampString() + RandomStrUtil.getNumStr(6);
 
 		String key = Constants.STOREKEY + name;
 		System.out.println("key: " + key);
@@ -65,7 +65,7 @@ public class ImageUploadAction extends ActionSupport {
 			e.printStackTrace();
 			dataMap.put("data", "failed");
 		} 
-		time = "";
+		
 		name = "";
 		return SUCCESS;
 	}

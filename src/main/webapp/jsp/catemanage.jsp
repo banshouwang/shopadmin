@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!doctype html>
 <html>
 <head>
@@ -32,7 +31,7 @@
 				<button class="btn btn-default">Export</button> -->
 				<div class="btn-group"></div>
 			</div>
-			
+
 			<div class="panel-body">
 				<div class="dataTable_wrapper">
 					<table class="table table-striped table-bordered table-hover" id="cates">

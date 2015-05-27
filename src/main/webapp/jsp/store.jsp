@@ -3,7 +3,62 @@
 <!doctype html>
 <html>
 <head>
-<script type="text/javascript">
+</head>
+<body class="theme-blue">
+	<div class="panel panel-default">
+		<p class="panel-heading no-collapse">店铺信息</p>
+		<div class="panel-body">
+			<form id="storeDetails">
+				<div class="form-group">
+					<label>店名</label> <input id="storeName" name="storeName" type="text" class="form-control span12" value="${sessionScope.store.name}">
+				</div>
+				<div class="form-group">
+					<label>简介</label>
+					<textarea id="brief" name="brief" class="form-control span12 form-control" rows="" cols="">${sessionScope.store.brief}</textarea>
+				</div>
+
+				<div class="form-group">
+					<label>地址</label><br> <label for="select-choice-a" class="select">选择市区:</label> <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+						<option value="宁波市">宁波市</option>
+						<!-- <option value="杭州市">杭州市</option>
+						<option value="上海市">上海市</option>
+						<option value="南京市">南京市</option> -->
+					</select> <select name="select-choice-b" id="select-choice-b" data-native-menu="false">
+						<option value="江东区">江东区</option>
+						<option value="江北区">江北区</option>
+						<option value="海曙区">海曙区</option>
+						<option value="高新区">高新区</option>
+						<option value="鄞州区">鄞州区</option>
+					</select> <small>（下面请填写详细地址）</small> <input id="address" name="address" type="text" class="form-control span12" value="${sessionScope.store.address}">
+				</div>
+				<div class="form-group">
+					<label>经度</label> <input id="longitude" name="longitude" type="text" class="form-control span12" value="${sessionScope.store.longitude}">
+				</div>
+				<div class="form-group">
+					<label>纬度</label> <input id="latitude" name="latitude" type="text" class="form-control span12" value="${sessionScope.store.latitude}">
+				</div>
+				<div class="form-group">
+					<label>电话</label> <input id="tel" name="tel" type="text" class="form-control span12" value="${sessionScope.store.tel}">
+				</div>
+				<div class="form-group">
+					<a href="javascript:void(0);" class="btn btn-default" onclick="load('open')">上传图片</a> <a href="javascript:void(0);" class="btn btn-default" onclick="load('close')">关闭图片</a> &nbsp;&nbsp;<span><small>注意: 上传的第一张图片将作为店标使用</small></span><font color='red'>*</font>
+					<div id="imagesUpload"></div>
+				</div>
+				<div id="alert" class="alert alert-success" style="display: none;">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					店铺信息更新成功!
+				</div>
+				<div id="alert_error" class="alert alert-danger" style="display: none;">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					店铺信息更新失败!
+				</div>
+				<a href="javascript:void(0);" onclick="update()" class="btn btn-primary pull-left">更新店铺</a>
+				<div class="clearfix"></div>
+			</form>
+
+		</div>
+	</div>
+	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#storeDetails").validate({
 			rules : {
@@ -53,17 +108,7 @@
 				}
 			},
 			submitHandler : function(form) {
-				/*console.log("111111");
-				if (checkImages) {
-					console.log("22222");
-					var names = getImages();
-					var action = "../d/storeUpdate.action?storeName=" + $("#storeName").val() + "&brief=" + $("#brief").val() + "&address=" + $("#address").val() + "&tel=" + $("#tel").val() + "&names=" + names;
-					console.log("action: ", action);
-					form.action = action;
-					form.submit();
-				} else {
-					alert("请上传店铺图片");
-				}*/
+				
 			}
 		});
 	});
@@ -177,65 +222,5 @@
 		}
 	}
 </script>
-</head>
-<body class="theme-blue">
-	<div class="panel panel-default">
-		<p class="panel-heading no-collapse">店铺信息</p>
-		<div class="panel-body">
-			<form id="storeDetails">
-				<div class="form-group">
-					<label>店名</label> <input id="storeName" name="storeName" type="text" class="form-control span12" value="${sessionScope.store.name}">
-				</div>
-				<div class="form-group">
-					<label>简介</label>
-					<textarea id="brief" name="brief" class="form-control span12 form-control" rows="" cols="">${sessionScope.store.brief}</textarea>
-				</div>
-				
-				<div class="form-group">
-					<label>地址</label><br>
-					<label for="select-choice-a" class="select">选择市区:</label>
-					<select name="select-choice-a" id="select-choice-a" data-native-menu="false">
-						<option value="宁波市">宁波市</option>
-						<!-- <option value="杭州市">杭州市</option>
-						<option value="上海市">上海市</option>
-						<option value="南京市">南京市</option> -->
-					</select> 
-					<select name="select-choice-b" id="select-choice-b" data-native-menu="false">
-						<option value="江东区">江东区</option>
-						<option value="江北区">江北区</option>
-						<option value="海曙区">海曙区</option>
-						<option value="高新区">高新区</option>
-						<option value="鄞州区">鄞州区</option>
-					</select>
-					<small>（下面请填写详细地址）</small>
-					<input id="address" name="address" type="text" class="form-control span12" value="${sessionScope.store.address}">
-				</div>
-				<div class="form-group">
-					<label>经度</label> <input id="longitude" name="longitude" type="text" class="form-control span12" value="${sessionScope.store.longitude}">
-				</div>
-				<div class="form-group">
-					<label>纬度</label> <input id="latitude" name="latitude" type="text" class="form-control span12" value="${sessionScope.store.latitude}">
-				</div>
-				<div class="form-group">
-					<label>电话</label> <input id="tel" name="tel" type="text" class="form-control span12" value="${sessionScope.store.tel}">
-				</div>
-				<div class="form-group">
-					<a href="javascript:void(0);" class="btn btn-default" onclick="load('open')">上传图片</a> <a href="javascript:void(0);" class="btn btn-default" onclick="load('close')">关闭图片</a> &nbsp;&nbsp;<span><small>注意: 上传的第一张图片将作为店标使用</small></span><font color='red'>*</font>
-					<div id="imagesUpload"></div>
-				</div>
-				<div id="alert" class="alert alert-success" style="display: none;">
-					<button type="button" class="close" data-dismiss="alert">×</button>
-					店铺信息更新成功!
-				</div>
-				<div id="alert_error" class="alert alert-danger" style="display: none;">
-					<button type="button" class="close" data-dismiss="alert">×</button>
-					店铺信息更新失败!
-				</div>
-				<a href="javascript:void(0);" onclick="update()" class="btn btn-primary pull-left">更新店铺</a>
-				<div class="clearfix"></div>
-			</form>
-
-		</div>
-	</div>
 </body>
 </html>

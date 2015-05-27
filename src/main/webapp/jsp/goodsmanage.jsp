@@ -28,7 +28,6 @@
 								<th>商品编号</th>
 								<th>分类</th>
 								<th>名称</th>
-								<th>简介</th>
 								<th>原价(元)</th>
 								<th>平台价(元)</th>
 								<th>抵用券?</th>
@@ -69,17 +68,17 @@
 		}
 
 		function tableRender() {
+			var storeNumber = '${sessionScope.store.number}';
+			alert(storeNumber);
 			$('#goods').dataTable({
 				destroy : true,
-				"ajax" : "../d/getAllGoods.action",
+				"ajax" : "../d/getAllGoodsByStoreNumber.action?storeNum=" + storeNumber,
 				"columns" : [ {
 					"data" : "number"
 				}, {
 					"data" : "category"
 				}, {
 					"data" : "name"
-				}, {
-					"data" : "brief"
 				}, {
 					"data" : "priceori"
 				}, {

@@ -84,13 +84,19 @@ public class GoodsAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String getAll(){
-		LOGGER.info("[GoodAction] {getAll method} begin to get the goods from DB ...");
+	public String getAllByNumber(){
+		LOGGER.info("[GoodAction] {getAllByNumber method} begin to get the goods from DB for store number: " + storeNum);
 		dataMap = new HashMap<String, Object>();
-		List<Goods> goods = goodsService.getAll();
+		List<Goods> goods = null;
+		try{
+			goods = goodsService.getAllByNumber(storeNum);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 		
 		LOGGER.info("[GoodAction] {getAll method} the count of the goods items is: " + goods.size());
 		dataMap.put("data", goods);
+		
 		return SUCCESS;
 	}
 	

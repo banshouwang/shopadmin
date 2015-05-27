@@ -25,12 +25,6 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	@Transactional
-	public List<Goods> getAll() {
-		return goodsDao.getAll();
-	}
-
-	@Override
-	@Transactional
 	public void deleteById(String id) {
 		goodsDao.deleteById(id);		
 	}
@@ -45,5 +39,11 @@ public class GoodsServiceImpl implements GoodsService {
 	@Transactional
 	public String consume(String password) {
 		return goodsDao.consume(password);
+	}
+
+	@Override
+	@Transactional
+	public List<Goods> getAllByNumber(String storeNumber) {
+		return goodsDao.getAllByNumber(storeNumber);
 	}
 }

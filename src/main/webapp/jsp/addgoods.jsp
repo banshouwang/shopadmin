@@ -53,9 +53,6 @@
 				}
 			},
 			messages : {
-				/*washcate : {
-					maxlength : "请选择分类",
-				},*/
 				gname : {
 					required : "请输入名称",
 					maxlength : "名称不能超过50位"
@@ -82,12 +79,6 @@
 				var category = $("#category").val();
 				if(category != "选择类别"){
 					addGoods();
-					/*var image = document.getElementById("imageName").value;
-					if (image == "" || image == null) {
-						alert("请上传图片");
-					} else {
-						addGoods();
-					}*/
 				} else {
 					alert("请选择分类");
 				}

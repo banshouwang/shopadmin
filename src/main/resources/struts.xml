@@ -61,7 +61,7 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
-		<action name="getAllGoods" class="com.banshou.app.actions.GoodsAction" method="getAll">
+		<action name="getAllGoodsByStoreNumber" class="com.banshou.app.actions.GoodsAction" method="getAllByNumber">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>

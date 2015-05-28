@@ -20,7 +20,7 @@ public class Goods {
 	private String category;
 	
 	@Column(name = "g_is_valid", nullable = true)
-	private String isvalid;
+	private boolean isvalid;
 	
 	@Column(name = "g_priceori", nullable = true)
 	private int priceori;
@@ -96,10 +96,10 @@ public class Goods {
 	public void setPricehere(int pricehere) {
 		this.pricehere = pricehere;
 	}
-	public String getIsvalid() {
+	public boolean getIsvalid() {
 		return isvalid;
 	}
-	public void setIsvalid(String isvalid) {
+	public void setIsvalid(boolean isvalid) {
 		this.isvalid = isvalid;
 	}
 	public String getIsticket() {

@@ -56,10 +56,11 @@ public class StoreAction extends ActionSupport {
 		store.setLatitude(latitude);
 		store.setPoint(0);
 
-		int result = storeService.updateStoreByNum(store);
-		if (result == 1) {
+		try{
+			storeService.updateStoreByNum(store);
 			dataMap.put("data", "success");
-		} else {
+		} catch(Exception e){
+			e.printStackTrace();
 			dataMap.put("data", "fail");
 		}
 		names = "";

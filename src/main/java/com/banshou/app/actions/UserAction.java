@@ -1,5 +1,6 @@
 package com.banshou.app.actions;
 
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ import com.banshou.app.domain.User;
 import com.banshou.app.service.StoreService;
 import com.banshou.app.service.UserService;
 import com.banshou.app.utils.common.CodeGenerator;
+import com.banshou.app.utils.common.Config;
+import com.banshou.app.utils.security.MD5HashUtil;
+import com.banshou.app.utils.send.JsonReqClient;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport implements SessionAware {
@@ -28,10 +32,13 @@ public class UserAction extends ActionSupport implements SessionAware {
 	private String shop;
 	private Map<String, Object> session;
 	private String password;
+	private String oripass;
+	private String newpass;
+	private String openId;
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	StoreService storeService;
 
@@ -95,9 +102,14 @@ public class UserAction extends ActionSupport implements SessionAware {
 
 	public String login() {
 		dataMap = new HashMap<String, Object>();
-		User user = userService.login(mobile, password);
+		User user = null;
+		try {
+			user = userService.login(mobile, MD5HashUtil.hashCode(password));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		Store store = new Store();
-		if(user != null){
+		if (user != null) {
 			store = storeService.getStoreByNum(user.getStoreNum());
 			session.put("user", user);
 			session.put("store", store);
@@ -108,10 +120,67 @@ public class UserAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
-	// public String addPoint(){
-	// userService.addPoint(openId, point);
-	// return SUCCESS;
-	// }
+	public String changePassword() {
+		LOGGER.info("[shopadmin] [UserAction] begin to change password with the mobile: " + mobile + " and the oripass: " + oripass + " and the new pass: " + newpass);
+		dataMap = new HashMap<String, Object>();
+		User user = null;
+		try {
+			user = userService.login(mobile, MD5HashUtil.hashCode(oripass));
+			if (user != null) {
+				System.out.println(user.getPassword());
+				user.setPassword(MD5HashUtil.hashCode(newpass));
+				userService.updateUser(user);
+				dataMap.put("data", "success");
+			} else {
+				dataMap.put("data", "oriPassWrong");
+			}
+
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+
+		return SUCCESS;
+	}
+
+	/* 商家申请重置密码，发送验证短信 */
+	public String valid() {
+		LOGGER.info("[shopadmin] [UserAction] {mobile valid method} begin ...");
+		LOGGER.info("[shopadmin] [UserAction] {mobile valid method} the mobile number is: " + mobile);
+		dataMap = new HashMap<String, Object>();
+
+		// 生成手机验证码并发送到手机
+		try {
+			String validCode = CodeGenerator.mobileValid();
+			System.out.println("validCode is: " + validCode);
+			JsonReqClient client = new JsonReqClient();
+
+			client.templateSMS(Config.ACCOUNDSID, Config.SMSTOKEN, Config.SMSAPPID, Config.SMSTMPID, mobile, validCode + "," + Config.VALIDTIME);
+
+			dataMap.put("validCode", validCode);
+			dataMap.put("mobile", mobile);
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+
+		return SUCCESS;
+	}
+
+	public String resetPassword() {
+		LOGGER.info("[shopadmin] [UserAction] {mobile resetPassword method} with the openId: " + openId);
+		dataMap = new HashMap<String, Object>();
+
+		try {
+			userService.resetPassword(mobile, MD5HashUtil.hashCode(newpass));
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		return SUCCESS;
+	}
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -152,6 +221,30 @@ public class UserAction extends ActionSupport implements SessionAware {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getOripass() {
+		return oripass;
+	}
+
+	public void setOripass(String oripass) {
+		this.oripass = oripass;
+	}
+
+	public String getNewpass() {
+		return newpass;
+	}
+
+	public void setNewpass(String newpass) {
+		this.newpass = newpass;
+	}
+
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 }

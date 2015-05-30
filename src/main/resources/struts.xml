@@ -8,7 +8,7 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="package" />
 	
-    <!-- <include file="struts-wx.xml" />   -->                                                            
+    <include file="struts-json.xml" />                                                            
 	
 	<package name="mobile" namespace="/mobile" extends="struts-default">
 		<action name="registry" class="com.banshou.app.actions.UserAction" method="reg">

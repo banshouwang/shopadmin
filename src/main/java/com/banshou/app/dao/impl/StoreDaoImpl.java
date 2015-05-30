@@ -38,13 +38,8 @@ public class StoreDaoImpl implements StoreDao {
 	}
 
 	@Override
-	public int updateStoreByNum(Store store) {
-		try {
-			em.merge(store);
-			em.flush();
-			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
+	public void updateStoreByNum(Store store) {
+		em.merge(store);
+		em.flush();
 	}
 }

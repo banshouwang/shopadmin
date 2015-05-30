@@ -45,7 +45,7 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	@Transactional
-	public int updateStoreByNum(Store store) {
-		return storeDao.updateStoreByNum(store);
+	public void updateStoreByNum(Store store) {
+		storeDao.updateStoreByNum(store);
 	}
 }

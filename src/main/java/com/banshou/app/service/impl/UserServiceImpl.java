@@ -37,4 +37,15 @@ public class UserServiceImpl implements UserService {
 		return userDao.login(mobile, pass);
 	}
 
+	@Override
+	@Transactional
+	public void updateUser(User user) {
+		userDao.updateUser(user);
+	}
+
+	@Override
+	@Transactional
+	public void resetPassword(String mobile, String password) {
+		userDao.resetPassword(mobile, password);
+	}
 }

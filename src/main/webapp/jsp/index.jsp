@@ -14,58 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/theme.css">
 <link rel="stylesheet" type="text/css" href="../css/premium.css">
 
-<script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../lib/jquery.cookie.js"></script>
-<script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script>
-<script type="text/javascript" src="../lib/datatable/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../lib/datatable/dataTables.bootstrap.js"></script>
-<script type="text/javascript" src="../lib/jquery.validate.min.js"></script>
-<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="../lib/highcharts/highcharts.js"></script>
-<script type="text/javascript" src="../lib/highcharts/exporting.js" charset="utf-8"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#example').DataTable();
-	});
-	function openpage(command) {
-		if (command == "userManage") {
-			$("#maincontent").load("users.jsp");
-		}
-		if (command == "goodsManage") {
-			$("#maincontent").load("goodsmanage.jsp");
-		}
-		if (command == "addgoods") {
-			$("#maincontent").load("addgoods.jsp");
-		}
-		if (command == "shopManage") {
-			$("#maincontent").load("shopmanage.jsp");
-		}
-		if (command == "cateManage") {
-			$("#maincontent").load("catemanage.jsp");
-		}
-		if (command == "addcate") {
-			$("#maincontent").load("addcate.jsp");
-		}
-		if (command == "store") {
-			$("#maincontent").load("store.jsp");
-		}
-		if (command == "todayOrder") {
-			$("#maincontent").load("ordermanage.jsp", {"flag" : "today"});
-		}
-		if (command == "ordermanage") {
-			$("#maincontent").load("ordermanage.jsp", {"flag" : "all"});
-		}
-		if (command == "goods") {
-			$("#maincontent").load("report.htm");
-		}
-		if (command == "use") {
-			$("#maincontent").load("consume.jsp");
-		}
-		/*if (command == "order") {
-			$("#maincontent").load("report.htm");
-		}*/
-	}
-</script>
+
 <style type="text/css">
 #line-chart {
 	height: 300px;
@@ -93,6 +42,7 @@
 
 					<ul class="dropdown-menu">
 						<li><a tabindex="-1" href="../mobile/logout.action">注销</a></li>
+						<li><a tabindex="-1" onclick="openpage('change')">修改密码</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -149,9 +99,8 @@
 						</ul>
 
 						<p>如需帮助，请随时联系我们：</p>
-						
-						<small>公司地址：宁波市鄞州区四明东路111号  </small><br>
-						<small>联系电话：0574-87195560</small>
+
+						<small>公司地址：宁波市鄞州区四明东路111号 </small><br> <small>联系电话：0574-87195560</small>
 					</div>
 				</div>
 			</div>
@@ -167,5 +116,60 @@
 			© 2014 <a href="http://weibo.com/u/5506812360" target="_blank">扳手科技</a>
 		</p>
 	</footer>
+	<script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script>
+	<script type="text/javascript" src="../lib/datatable/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../lib/datatable/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" src="../lib/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../lib/highcharts/highcharts.js"></script>
+	<script type="text/javascript" src="../lib/highcharts/exporting.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable();
+	});
+	function openpage(command) {
+		if (command == "userManage") {
+			$("#maincontent").load("users.jsp");
+		}
+		if (command == "goodsManage") {
+			$("#maincontent").load("goodsmanage.jsp");
+		}
+		if (command == "addgoods") {
+			$("#maincontent").load("addgoods.jsp");
+		}
+		if (command == "shopManage") {
+			$("#maincontent").load("shopmanage.jsp");
+		}
+		if (command == "cateManage") {
+			$("#maincontent").load("catemanage.jsp");
+		}
+		if (command == "addcate") {
+			$("#maincontent").load("addcate.jsp");
+		}
+		if (command == "store") {
+			$("#maincontent").load("store.jsp");
+		}
+		if (command == "todayOrder") {
+			$("#maincontent").load("ordermanage.jsp", {"flag" : "today"});
+		}
+		if (command == "ordermanage") {
+			$("#maincontent").load("ordermanage.jsp", {"flag" : "all"});
+		}
+		if (command == "goods") {
+			$("#maincontent").load("report.htm");
+		}
+		if (command == "use") {
+			$("#maincontent").load("consume.jsp");
+		}
+		if (command == "change") {
+			$("#maincontent").load("changepass.jsp");
+		}
+		if (command == "reset") {
+			$("#maincontent").load("resetpass.jsp");
+		}
+	}
+</script>
 </body>
 </html>

@@ -7,4 +7,6 @@ public interface UserDao {
 	public boolean isExist(String openId);
 	public User getUserInfo(String openId);
 	public User login(String mobile, String pass);
+	public void updateUser(User user);
+	public void resetPassword(String mobile, String password);
 }

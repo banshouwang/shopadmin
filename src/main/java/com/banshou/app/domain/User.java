@@ -39,6 +39,9 @@ public class User {
 
 	@Column(name = "u_gender", nullable = true)
 	private String gender;
+	
+	@Column(name = "u_password", nullable = true)
+	private String password;
 
 	public String getGender() {
 		return gender;
@@ -118,6 +121,14 @@ public class User {
 
 	public void setPoint(int point) {
 		this.point = point;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

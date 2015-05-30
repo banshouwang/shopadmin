@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="package" />
+
+	<package name="json" extends="json-default" namespace="/d">
+		<!-- Users -->
+		<action name="getAllUsers" class="com.banshou.app.actions.UserAction" method="getAllUsers">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="checkMobile" class="com.banshou.app.actions.UserAction" method="checkMobile">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="changePassword" class="com.banshou.app.actions.UserAction" method="changePassword">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="valid" class="com.banshou.app.actions.UserAction" method="valid">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="reset" class="com.banshou.app.actions.UserAction" method="resetPassword">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

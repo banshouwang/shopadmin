@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class CodeGenerator {
 
-	public static String mobileValid() {
+	public static synchronized String mobileValid() {
 		Random rd = new Random();
 		String code = "";
 		int getNum;

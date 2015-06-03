@@ -60,6 +60,9 @@ public class Goods {
 	@Column(name = "g_area", nullable = true)
 	private String area;
 	
+	@Column(name = "g_sell", nullable = true)
+	private int sellTotal;
+	
 	public String getArea() {
 		return area;
 	}
@@ -156,5 +159,10 @@ public class Goods {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	
+	public int getSellTotal() {
+		return sellTotal;
+	}
+	public void setSellTotal(int sellTotal) {
+		this.sellTotal = sellTotal;
+	}
 }

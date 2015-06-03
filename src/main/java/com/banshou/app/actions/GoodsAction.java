@@ -77,6 +77,7 @@ public class GoodsAction extends ActionSupport {
 		goods.setStorenum(storeNum);
 		goods.setLatitude(latitude);
 		goods.setLongitude(longitude);
+		goods.setSellTotal(0);
 		goodsService.addGoods(goods);
 		
 		LOGGER.info("[GoodAction] add goods gonna to end...");

@@ -19,16 +19,9 @@
 
 				<div class="form-group">
 					<label>地址</label><br> <label for="select-choice-a" class="select">选择市区:</label> <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
-						<option value="宁波市">宁波市</option>
-						<!-- <option value="杭州市">杭州市</option>
-						<option value="上海市">上海市</option>
-						<option value="南京市">南京市</option> -->
+						
 					</select> <select name="select-choice-b" id="select-choice-b" data-native-menu="false">
-						<option value="江东区">江东区</option>
-						<option value="江北区">江北区</option>
-						<option value="海曙区">海曙区</option>
-						<option value="高新区">高新区</option>
-						<option value="鄞州区">鄞州区</option>
+						
 					</select> <small>（下面请填写详细地址）</small> <input id="address" name="address" type="text" class="form-control span12" value="${sessionScope.store.address}">
 				</div>
 				<div class="form-group">
@@ -60,6 +53,8 @@
 	</div>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		getAllCity();
+		getAllDistrict();
 		$("#storeDetails").validate({
 			rules : {
 				storeName : {
@@ -220,6 +215,64 @@
 				}
 			});
 		}
+	}
+	
+	function getAllCity(){
+		$.ajax({
+			type : "post",
+			url : "../d/getAllCity.action",
+			dataType : "json",
+			success : function(data) {
+				var result = data.data;
+				if (result != null) {
+					setOptionsCity(result);
+				} else {
+					alert("获取商店列表失败，请重试");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(errorThrown);
+			}
+		});
+	}
+	
+	function getAllDistrict(){
+		$.ajax({
+			type : "post",
+			url : "../d/getAllDistrict.action",
+			dataType : "json",
+			success : function(data) {
+				var result = data.data;
+				if (result != null) {
+					setOptions(result);
+				} else {
+					alert("获取商店列表失败，请重试");
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(errorThrown);
+			}
+		});
+	}
+	
+	function setOptionsCity(data){
+		var htmlString = "";
+		$.each(data, function(i, value) {
+			htmlString += 
+				"<option value='" + value.name +"'>" + value.name + "</option>";
+		});
+		
+		$("#select-choice-a").append(htmlString);
+	}
+	
+	function setOptions(data){
+		var htmlString = "";
+		$.each(data, function(i, value) {
+			htmlString += 
+				"<option value='" + value.name +"'>" + value.name + "</option>";
+		});
+		
+		$("#select-choice-b").append(htmlString);
 	}
 </script>
 </body>

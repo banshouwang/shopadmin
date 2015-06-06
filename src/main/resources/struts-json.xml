@@ -36,5 +36,20 @@
 			</result>
 		</action>
 		
+		
+		<!-- 城市管理 -->
+		<action name="getAllCity" class="com.banshou.app.actions.CityAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 区域管理 -->
+		<action name="getAllDistrict" class="com.banshou.app.actions.DistrictAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 	</package>
 </struts>

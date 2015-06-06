@@ -66,14 +66,14 @@
 				</ul>
 			</li>
 
-			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> 报表系统 <i class="fa fa-collapse"></i></a></li>
+			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-list-alt"></i> 报表系统 <i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="accounts-menu nav nav-list collapse">
 					<li><a href="javascript:void(0);" onclick="openpage('goods')"><span class="fa fa-caret-right"></span> 商品</a></li>
 					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 订单</a></li>
 				</ul>
 			</li>
-			<li><a href="#" data-target=".tools" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> 商家工具 <i class="fa fa-collapse"></i></a></li>
+			<li><a href="#" data-target=".tools" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-gear"></i> 商家工具 <i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="tools nav nav-list collapse">
 					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 图片剪切</a></li>

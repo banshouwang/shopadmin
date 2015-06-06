@@ -72,7 +72,7 @@ public class GoodsAction extends ActionSupport {
 		goods.setArea(area);
 		goods.setDistance(0);
 		goods.setImageName(imageName);
-		goods.setIsvalid(true);
+		goods.setStatus("active");;
 		goods.setAddress(address);
 		goods.setStorenum(storeNum);
 		goods.setLatitude(latitude);

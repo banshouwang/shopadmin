@@ -19,8 +19,8 @@ public class Goods {
 	@Column(name = "g_category", nullable = true)
 	private String category;
 	
-	@Column(name = "g_is_valid", nullable = true)
-	private boolean isvalid;
+	@Column(name = "g_status", nullable = true)
+	private String status;
 	
 	@Column(name = "g_priceori", nullable = true)
 	private int priceori;
@@ -99,11 +99,12 @@ public class Goods {
 	public void setPricehere(int pricehere) {
 		this.pricehere = pricehere;
 	}
-	public boolean getIsvalid() {
-		return isvalid;
+	
+	public String getStatus() {
+		return status;
 	}
-	public void setIsvalid(boolean isvalid) {
-		this.isvalid = isvalid;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getIsticket() {
 		return isticket;

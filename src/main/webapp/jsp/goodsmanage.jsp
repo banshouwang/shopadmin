@@ -88,7 +88,18 @@
 				}, {
 					"data" : "ticket"
 				}, {
-					"data" : "isvalid"
+					"data" : null,
+					render : function(data, type, row){
+						if(data.status == "active"){
+							return "有效";
+						} else if(data.status == "storeDown"){
+							return "被商家下架";
+						} else if(data.status == "platformDown"){
+							return "被平台下架";
+						} else {
+
+						}
+					}
 				}, {
 					"data" : "imageName"
 				}, {

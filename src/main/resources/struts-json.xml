@@ -51,5 +51,12 @@
 			</result>
 		</action>
 		
+		<!-- 店铺管理 -->
+		<action name="deleteStoreImage" class="com.banshou.app.actions.StoreAction" method="deleteImage">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 	</package>
 </struts>

@@ -41,12 +41,17 @@ public class UserDaoImpl implements UserDao {
 		query.setParameter(1, mobile);
 		query.setParameter(2, pass);
 		List<User> users = query.getResultList();
-		if(users.size() != 0){
-			return users.get(0);
+		if (users.size() != 0) {
+			User u = users.get(0);
+			if (u.isIsstore()) {
+				return users.get(0);
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
@@ -62,7 +67,7 @@ public class UserDaoImpl implements UserDao {
 		query.setParameter(1, mobile);
 		User u = (User) query.getSingleResult();
 		u.setPassword(password);
-		
+
 		em.merge(u);
 		em.flush();
 	}

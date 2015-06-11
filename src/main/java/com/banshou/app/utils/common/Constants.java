@@ -9,6 +9,7 @@ public class Constants {
 	public static String BUCKETNAME = "banshou";
 	public static String GOODSKEY = "images/goods/";
 	public static String STOREKEY = "images/store/";
+	public static String STOREICONKEY = "images/storeIcon/";
 	
 	public static String ADDUSERSQL = "INSERT INTO bs_user (u_number, u_openid, u_credit, u_is_vip, u_mobile, u_password, u_is_shop, u_registry_time, u_point) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static String CHECKMOBILE = "SELECT u_mobile FROM bs_user WHERE u_mobile = ?";

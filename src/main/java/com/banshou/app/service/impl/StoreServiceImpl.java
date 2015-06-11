@@ -19,14 +19,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	@Transactional
 	public void addGoods(Store store) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
 	public List<Store> getAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -39,7 +37,6 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	@Transactional
 	public void deleteByNum(String number) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -47,5 +44,23 @@ public class StoreServiceImpl implements StoreService {
 	@Transactional
 	public void updateStoreByNum(Store store) {
 		storeDao.updateStoreByNum(store);
+	}
+
+	@Override
+	@Transactional
+	public void updateIcon(String iconName, String storeNum) {
+		storeDao.updateIcon(iconName, storeNum);
+	}
+
+	@Override
+	@Transactional
+	public void deleteImage(String imageName, String storeNum) {
+		storeDao.deleteImage(imageName, storeNum);
+	}
+
+	@Override
+	@Transactional
+	public void updateImage(String imageName, String storeNum) {
+		storeDao.updateImage(imageName, storeNum);
 	}
 }

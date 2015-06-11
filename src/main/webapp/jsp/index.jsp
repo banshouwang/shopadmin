@@ -118,7 +118,6 @@
 	</footer>
 	<script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../lib/jquery.cookie.js"></script>
-	<script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script>
 	<script type="text/javascript" src="../lib/datatable/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="../lib/datatable/dataTables.bootstrap.js"></script>
 	<script type="text/javascript" src="../lib/jquery.validate.min.js"></script>

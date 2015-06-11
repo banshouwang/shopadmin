@@ -10,4 +10,7 @@ public interface StoreService {
 	public Store getStoreByNum(String number);
 	public void updateStoreByNum(Store store);
 	public void deleteByNum(String number);
+	public void updateIcon(String iconName, String storeNum);
+	public void deleteImage(String imageName, String storeNum);
+	public void updateImage(String imageName, String storeNum);
 }

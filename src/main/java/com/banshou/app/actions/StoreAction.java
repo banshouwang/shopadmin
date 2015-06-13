@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import com.banshou.app.service.StoreService;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component("StoreAction")
-public class StoreAction extends ActionSupport {
+public class StoreAction extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(StoreAction.class);
@@ -30,6 +31,7 @@ public class StoreAction extends ActionSupport {
 
 	@Autowired
 	StoreService storeService;
+	private Map<String, Object> session;
 
 	public String update() {
 		LOGGER.info("[StoreAction] {update method} begin to update the store details ...");
@@ -63,6 +65,8 @@ public class StoreAction extends ActionSupport {
 		dataMap = new HashMap<String, Object>();
 		try{
 			storeService.deleteImage(imageName, storeNum);
+			Store s = storeService.getStoreByNum(storeNum);
+			session.put("store", s);
 			dataMap.put("data", "success");
 		} catch(Exception e){
 			e.printStackTrace();
@@ -71,7 +75,12 @@ public class StoreAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
-
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+	
 	public Map<String, Object> getDataMap() {
 		return dataMap;
 	}
@@ -151,5 +160,8 @@ public class StoreAction extends ActionSupport {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
-	
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
 }

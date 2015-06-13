@@ -169,7 +169,7 @@ public class UserAction extends ActionSupport implements SessionAware {
 	}
 
 	public String resetPassword() {
-		LOGGER.info("[shopadmin] [UserAction] {mobile resetPassword method} with the openId: " + openId);
+		LOGGER.info("[shopadmin] [UserAction] {mobile resetPassword method} ");
 		dataMap = new HashMap<String, Object>();
 
 		try {

@@ -129,7 +129,13 @@
 			getAllCity();
 			getAllDistrict();
 			var imagePrefix = "http://banshou.oss-cn-hangzhou.aliyuncs.com/images/storeIcon/";
-			$('#storeIcon').attr('src', imagePrefix + "${sessionScope.store.icon}");
+			var storeIcon = "${sessionScope.store.icon}";
+			if(storeIcon != ""){
+				$('#storeIcon').attr('src', imagePrefix + storeIcon);
+			} else {
+				$('#storeIcon').html("");
+			}
+			
 			$.uploadPreview({
 				input_field : "#imageUpload",
 				preview_box : "#image-preview",

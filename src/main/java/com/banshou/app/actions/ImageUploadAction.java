@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.banshou.app.domain.Store;
 import com.banshou.app.service.StoreService;
 import com.banshou.app.utils.aliyun.BucketHandler;
 import com.banshou.app.utils.common.CodeGenerator;
@@ -17,7 +19,7 @@ import com.banshou.app.utils.common.RandomStrUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component("ImageUploadAction")
-public class ImageUploadAction extends ActionSupport {
+public class ImageUploadAction extends ActionSupport implements SessionAware {
 
 	private static final Logger LOGGER = Logger.getLogger(GoodsAction.class);
 	private static final long serialVersionUID = 1L;
@@ -36,6 +38,7 @@ public class ImageUploadAction extends ActionSupport {
 	
 	@Autowired
 	StoreService storeService;
+	private Map<String, Object> session;
 	
 	public String upload() {
 		LOGGER.info("[ImageUploadAction] {upload method} begin to upload the image with the file name " + "{ " + fileName + " } and the store number is: " + storeNum);
@@ -47,6 +50,8 @@ public class ImageUploadAction extends ActionSupport {
 		try {
 			bh.uploadFile(Constants.BUCKETNAME, key, upload);
 			storeService.updateIcon(fileName, storeNum);
+			Store s = storeService.getStoreByNum(storeNum);
+			session.put("store", s);
 			dataMap.put("data", key);
 			
 		} catch (Exception e) {
@@ -67,8 +72,9 @@ public class ImageUploadAction extends ActionSupport {
 		try {
 			bh.uploadFile(Constants.BUCKETNAME, key, file);
 			storeService.updateImage(name, storeNum);
+			Store s = storeService.getStoreByNum(storeNum);
+			session.put("store", s);
 			dataMap.put("data", "success");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			dataMap.put("data", "error");
@@ -76,6 +82,11 @@ public class ImageUploadAction extends ActionSupport {
 		
 		name = "";
 		return SUCCESS;
+	}
+	
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
 	}
 
 	public File getUpload() {
@@ -149,5 +160,8 @@ public class ImageUploadAction extends ActionSupport {
 	public void setStoreNum(String storeNum) {
 		this.storeNum = storeNum;
 	}
-	
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
 }

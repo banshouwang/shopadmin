@@ -235,8 +235,8 @@
 
 		function load(param) {
 			if (param == "open") {
-				$("#imagesUpload").load("upload.jsp");
 				$("#imagesUpload").show();
+				$("#imagesUpload").load("upload.jsp");
 			}
 			if (param == "close") {
 				$("#imagesUpload").hide();

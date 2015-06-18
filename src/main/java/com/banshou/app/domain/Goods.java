@@ -63,6 +63,9 @@ public class Goods {
 	@Column(name = "g_sell", nullable = true)
 	private int sellTotal;
 	
+	@Column(name = "s_name", nullable = true)
+	private String storeName;
+	
 	public String getArea() {
 		return area;
 	}
@@ -165,5 +168,11 @@ public class Goods {
 	}
 	public void setSellTotal(int sellTotal) {
 		this.sellTotal = sellTotal;
+	}
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
 	}
 }

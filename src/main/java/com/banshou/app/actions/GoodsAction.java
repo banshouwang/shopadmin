@@ -37,7 +37,7 @@ public class GoodsAction extends ActionSupport {
 	private String storeNum;
 	private String latitude;
 	private String longitude;
-	
+	private String storeName;
 	private String password;
 	
 	@Autowired
@@ -78,6 +78,7 @@ public class GoodsAction extends ActionSupport {
 		goods.setLatitude(latitude);
 		goods.setLongitude(longitude);
 		goods.setSellTotal(0);
+		goods.setStoreName(storeName);
 		goodsService.addGoods(goods);
 		
 		LOGGER.info("[GoodAction] add goods gonna to end...");
@@ -266,6 +267,14 @@ public class GoodsAction extends ActionSupport {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getStoreName() {
+		return storeName;
+	}
+
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
 	}
 	
 }

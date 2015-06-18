@@ -28,16 +28,24 @@ public class OrderAction extends ActionSupport {
 	public String getToday() {
 		LOGGER.info("[OrderAction] {getToday method} begin to get the orders from DB ...");
 		dataMap = new HashMap<String, Object>();
-		List<Order> orders = orderService.getToday();
-		dataMap.put("data", orders);
+		try{
+			List<Order> orders = orderService.getToday();
+			dataMap.put("data", orders);
+		} catch (Exception e){
+			dataMap.put("data", null);
+		}
 		return SUCCESS;
 	}
 	
 	public String getAll() {
 		LOGGER.info("[OrderAction] {getAll method} begin to get the all orders from DB ...");
 		dataMap = new HashMap<String, Object>();
-		List<Order> orders = orderService.getAll();
-		dataMap.put("data", orders);
+		try{
+			List<Order> orders = orderService.getAll();
+			dataMap.put("data", orders);
+		} catch (Exception e){
+			dataMap.put("data", null);
+		}
 		return SUCCESS;
 	}
 	

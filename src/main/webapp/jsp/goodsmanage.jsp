@@ -69,7 +69,7 @@
 
 		function tableRender() {
 			var storeNumber = '${sessionScope.store.number}';
-			alert(storeNumber);
+			//alert(storeNumber);
 			$('#goods').dataTable({
 				destroy : true,
 				"ajax" : "../d/getAllGoodsByStoreNumber.action?storeNum=" + storeNumber,

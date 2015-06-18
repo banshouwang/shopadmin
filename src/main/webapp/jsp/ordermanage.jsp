@@ -21,8 +21,6 @@
 		} else {
 			url = "../d/getAllOrder.action";
 		}
-		console.log("flag: ", flag);
-		console.log("url: ", url);
 		
 		$('#order').dataTable({
 			destroy : true,

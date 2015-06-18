@@ -51,7 +51,6 @@ public class UserAction extends ActionSupport implements SessionAware {
 			user.setIsvip(false);
 			user.setIsstore(false);
 			user.setMobile(session.get("mobile").toString());
-			user.setPoint(0);
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String regtime = sdf.format(new Date());

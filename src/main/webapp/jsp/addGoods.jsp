@@ -17,19 +17,9 @@
 
 	$(document).ready(function() {
 		setOption();
-		
-		/*$.uploadPreview({
-			input_field : "#imageUpload",
-			preview_box : "#image-preview",
-			label_field : "#image-label",
-			no_label : true
-		});*/
 
 		$("#addGoods").validate({
 			rules : {
-				/*washcate : {
-					maxlength : 2,
-				},*/
 				gname : {
 					required : true,
 					maxlength : 50,
@@ -94,8 +84,7 @@
 		var longitude = "${sessionScope.store.longitude}";
 		var imageName = "${sessionScope.store.icon}";
 		var storeName = "${sessionScope.store.name}";
-		console.log("address: ", address);
-		console.log("storeNum: ", storeNum);
+
 		$.ajax({
 			type : "post",
 			url : "../d/addGoods.action",
@@ -116,12 +105,12 @@
 				brief : function() {
 					return $("#brief").val();
 				},
-				isticket : function() {
+				/*isticket : function() {
 					return $('input[name="radio-choice-h-2"]:checked').val();
 				},
 				ticket : function() {
 					return $("#select-choice-a").val();
-				},
+				},*/
 				imageName : imageName,
 				address : address,
 				storeNum : storeNum,
@@ -142,54 +131,6 @@
 			}
 		});
 	}
-	/*function upload() {
-		Date.prototype.Format = function(fmt) { 
-			var o = {
-				"M+" : this.getMonth() + 1, 
-				"d+" : this.getDate(), 
-				"h+" : this.getHours(), 
-				"m+" : this.getMinutes(),
-				"s+" : this.getSeconds(), 
-				"q+" : Math.floor((this.getMonth() + 3) / 3),
-				"S" : this.getMilliseconds()
-			
-			};
-			if (/(y+)/.test(fmt))
-				fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-			for ( var k in o)
-				if (new RegExp("(" + k + ")").test(fmt))
-					fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-			return fmt;
-		};
-
-		//document.getElementById("imageName").value = fileName;
-		var files = $("#imageUpload").val();
-		//alert(files);
-		if (files == null || files == "") {
-			alert('请选择图片');
-			return;
-		}
-
-		var fileName = new Date().Format("yyyyMMddhhmmss");
-		$("#imageName").val(fileName);
-
-		$.ajaxFileUpload({
-			url : '../d/uploadImage.action?fileName=' + fileName,
-			type : 'post',
-			dataType : 'json',
-			secureuri : false,
-			fileElementId : 'imageUpload',
-			timeout : 100000,
-			success : function(data, status) {
-
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert(errorThrown);
-			}
-		});
-
-		alert("上传成功");
-	}*/
 
 	function setOption(){
 		$.ajax({
@@ -272,14 +213,7 @@
 									<textarea rows="3" class="form-control" name="brief" id="brief"></textarea>
 								</div>
 
-								<!-- <div id="image-preview" style="width: 48px; height: 48px;">
-									<label id="image-label"></label><br>
-								</div>
-								<br>
-								<div class="form-group">
-									<input type="file" id="imageUpload" name="upload" value="选择图片" /><br> <a href="javascript:void(0);" class="btn btn-success" onclick="upload()">上传图片</a>
-								</div> -->
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label>是否支持抵用券?</label> <input name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked" type="radio" onclick="showTicket()"> <label for="radio-choice-h-2a">是</label> <input name="radio-choice-h-2" id="radio-choice-h-2b" value="off" type="radio" onclick="hideTicket()"> <label for="radio-choice-h-2b">否</label>
 								</div>
 
@@ -290,7 +224,7 @@
 										<option value="15">15元</option>
 										<option value="20">20元</option>
 									</select>
-								</div>
+								</div> -->
 								<input type="hidden" id="imageName" name="imageName" />
 								<div class="btn-toolbar list-toolbar">
 									<button class="btn btn-success">

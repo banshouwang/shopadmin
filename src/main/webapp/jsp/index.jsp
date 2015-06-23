@@ -54,7 +54,6 @@
 			<li>
 				<ul class="dashboard-menu nav nav-list collapse in">
 					<li><a href="javascript:void(0);" onclick="openpage('consume')"><span class="fa fa-caret-right"></span> 快速消费</a></li>
-					<li><a href="javascript:void(0);" onclick="openpage('store')"><span class="fa fa-caret-right"></span> 店铺设置</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('todayOrder')"><span class="fa fa-caret-right"></span> 今日订单</a></li>
 				</ul>
 			</li>
@@ -141,6 +140,8 @@
 			$("#maincontent").load("orderManage.jsp", {"flag" : "today"});
 		} else if (command == "orderManage") {
 			$("#maincontent").load("orderManage.jsp", {"flag" : "all"});
+		} else if(command == "store_basic"){
+			$("#maincontent").load("store/basic.jsp");
 		} else {
 			$("#maincontent").load(command + ".jsp");
 		}

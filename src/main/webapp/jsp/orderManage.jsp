@@ -48,7 +48,7 @@
 			}, {
 				"data" : "status"
 			}, {
-				"data" : "creatTime"
+				"data" : "createTime"
 			}, {
 				"data" : "payTime"
 			}, {

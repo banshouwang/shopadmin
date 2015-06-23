@@ -6,6 +6,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#cates').dataTable({
+			destroy : true,
 			"ajax": "data/getAllCates.action",
 			"columns" : [ {
 				"data" : "num"
@@ -24,7 +25,7 @@
 	<div class="content_other">
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary" onclick="openpage('addcate')">
+				<button class="btn btn-primary" onclick="openpage('addCate')">
 					<i class="fa fa-plus"></i> 添加分类
 				</button>
 				<!-- <button class="btn btn-default">Import</button>

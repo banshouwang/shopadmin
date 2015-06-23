@@ -12,7 +12,7 @@
 		</div>
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary" onclick="openpage('addgoods')">
+				<button class="btn btn-primary" onclick="openpage('addGoods')">
 					<i class="fa fa-plus"></i> 添加商品
 				</button>
 				<!-- <button class="btn btn-default">Import</button>

@@ -6,10 +6,10 @@ public class Constants {
 	public static final String WXAUTH = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + Config.APPID + "&redirect_uri=http%3A%2F%2F" + Config.HOSTNAME + "%2Fchebangshou%2Fmobile%2FauthQr.action&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
 	
 	// Aliyun constants
-	public static String BUCKETNAME = "banshou";
-	public static String GOODSKEY = "images/goods/";
-	public static String STOREKEY = "images/store/";
-	public static String STOREICONKEY = "images/storeIcon/";
+	public static String BUCKETNAME = Config.BUCKETNAME;
+	public static String GOODSKEY = Config.GOODSKEY;
+	public static String STOREKEY = Config.STOREKEY;
+	public static String STOREICONKEY = Config.STOREICONKEY;
 	
 	public static String ADDUSERSQL = "INSERT INTO bs_user (u_number, u_openid, u_credit, u_is_vip, u_mobile, u_password, u_is_shop, u_registry_time, u_point) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static String CHECKMOBILE = "SELECT u_mobile FROM bs_user WHERE u_mobile = ?";

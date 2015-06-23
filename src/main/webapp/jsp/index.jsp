@@ -42,7 +42,7 @@
 
 					<ul class="dropdown-menu">
 						<li><a tabindex="-1" href="../mobile/logout.action">注销</a></li>
-						<li><a tabindex="-1" onclick="openpage('change')">修改密码</a></li>
+						<li><a tabindex="-1" onclick="openpage('changePass')">修改密码</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -53,7 +53,7 @@
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> 控制面版<i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="dashboard-menu nav nav-list collapse in">
-					<li><a href="javascript:void(0);" onclick="openpage('use')"><span class="fa fa-caret-right"></span> 快速消费</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('consume')"><span class="fa fa-caret-right"></span> 快速消费</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('store')"><span class="fa fa-caret-right"></span> 店铺设置</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('todayOrder')"><span class="fa fa-caret-right"></span> 今日订单</a></li>
 				</ul>
@@ -62,7 +62,7 @@
 			<li>
 				<ul class="premium-menu nav nav-list collapse">
 					<li><a href="javascript:void(0);" onclick="openpage('goodsManage')"><span class="fa fa-caret-right"></span> 商品管理</a></li>
-					<li><a href="javascript:void(0);" onclick="openpage('ordermanage')"><span class="fa fa-caret-right"></span> 订单管理</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('orderManage')"><span class="fa fa-caret-right"></span> 订单管理</a></li>
 				</ul>
 			</li>
 
@@ -71,6 +71,14 @@
 				<ul class="accounts-menu nav nav-list collapse">
 					<li><a href="javascript:void(0);" onclick="openpage('goods')"><span class="fa fa-caret-right"></span> 商品</a></li>
 					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 订单</a></li>
+				</ul>
+			</li>
+			<li><a href="#" data-target=".shop-settings" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-home"></i> 商家设置 <i class="fa fa-collapse"></i></a></li>
+			<li>
+				<ul class="shop-settings nav nav-list collapse">
+					<li><a href="javascript:void(0);" onclick="openpage('store_basic')"><span class="fa fa-caret-right"></span> 基本信息</a></li>
+					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 店标设置</a></li>
+					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 图片设置</a></li>
 				</ul>
 			</li>
 			<li><a href="#" data-target=".tools" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-gear"></i> 商家工具 <i class="fa fa-collapse"></i></a></li>
@@ -129,44 +137,12 @@
 		$('#example').DataTable();
 	});
 	function openpage(command) {
-		if (command == "userManage") {
-			$("#maincontent").load("users.jsp");
-		}
-		if (command == "goodsManage") {
-			$("#maincontent").load("goodsmanage.jsp");
-		}
-		if (command == "addgoods") {
-			$("#maincontent").load("addgoods.jsp");
-		}
-		if (command == "shopManage") {
-			$("#maincontent").load("shopmanage.jsp");
-		}
-		if (command == "cateManage") {
-			$("#maincontent").load("catemanage.jsp");
-		}
-		if (command == "addcate") {
-			$("#maincontent").load("addcate.jsp");
-		}
-		if (command == "store") {
-			$("#maincontent").load("store.jsp");
-		}
 		if (command == "todayOrder") {
-			$("#maincontent").load("ordermanage.jsp", {"flag" : "today"});
-		}
-		if (command == "ordermanage") {
-			$("#maincontent").load("ordermanage.jsp", {"flag" : "all"});
-		}
-		if (command == "goods") {
-			$("#maincontent").load("report.htm");
-		}
-		if (command == "use") {
-			$("#maincontent").load("consume.jsp");
-		}
-		if (command == "change") {
-			$("#maincontent").load("changepass.jsp");
-		}
-		if (command == "reset") {
-			$("#maincontent").load("resetpass.jsp");
+			$("#maincontent").load("orderManage.jsp", {"flag" : "today"});
+		} else if (command == "orderManage") {
+			$("#maincontent").load("orderManage.jsp", {"flag" : "all"});
+		} else {
+			$("#maincontent").load(command + ".jsp");
 		}
 	}
 </script>

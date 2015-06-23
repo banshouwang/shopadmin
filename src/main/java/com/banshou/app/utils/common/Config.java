@@ -7,10 +7,8 @@ public class Config {
 	private static Properties prop = new Properties();
 	static {
 		try {
-			// 加载odb.properties配置文件
 			prop.load(Config.class.getResourceAsStream("/properties/info.properties"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -36,4 +34,9 @@ public class Config {
 	public static final String VALIDTIME = prop.getProperty("VALIDTIME");
 	public static final String SMSCONSUMETMPID = prop.getProperty("SMSCONSUMETMPID");
 	public static final String CBSPHONE = prop.getProperty("CBSPHONE");
+	
+	public static final String BUCKETNAME = prop.getProperty("BUCKETNAME");
+	public static final String GOODSKEY = prop.getProperty("GOODSKEY");
+	public static final String STOREKEY = prop.getProperty("STOREKEY");
+	public static final String STOREICONKEY = prop.getProperty("STOREICONKEY");
 }

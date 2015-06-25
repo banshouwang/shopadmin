@@ -76,8 +76,8 @@
 			<li>
 				<ul class="shop-settings nav nav-list collapse">
 					<li><a href="javascript:void(0);" onclick="openpage('store_basic')"><span class="fa fa-caret-right"></span> 基本信息</a></li>
-					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 店标设置</a></li>
-					<li><a href="javascript:void(0);" onclick="alert('该功能正在开发中，敬请期待！')"><span class="fa fa-caret-right"></span> 图片设置</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('store_icon')"><span class="fa fa-caret-right"></span> 店标设置</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('store_images')"><span class="fa fa-caret-right"></span> 图片设置</a></li>
 				</ul>
 			</li>
 			<li><a href="#" data-target=".tools" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-gear"></i> 商家工具 <i class="fa fa-collapse"></i></a></li>
@@ -142,6 +142,10 @@
 			$("#maincontent").load("orderManage.jsp", {"flag" : "all"});
 		} else if(command == "store_basic"){
 			$("#maincontent").load("store/basic.jsp");
+		} else if(command == "store_icon"){
+			$("#maincontent").load("store/storeIcon.jsp");
+		} else if(command == "store_images"){
+			$("#maincontent").load("store/storeImages.jsp");
 		} else {
 			$("#maincontent").load(command + ".jsp");
 		}
